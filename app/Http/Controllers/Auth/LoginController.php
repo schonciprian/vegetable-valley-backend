@@ -25,7 +25,7 @@ class LoginController extends Controller
             $token = $request->user()->createToken("VegetableValley");
             return response(['token' => $token->plainTextToken, 'name' => $request->user()->name], 201);
         }
-        return response("Authentication failed", 400);
+        return response(['failed' => 'Invalid username or password'], 400);
     }
 
     public function logout(Request $request)
