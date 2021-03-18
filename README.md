@@ -38,6 +38,10 @@ In the project directory, run:
 
 Open the url to check whether the server is running or not. 
 
+## Frontend
+
+[https://github.com/schonciprian/vegetable-valley-frontend](https://github.com/schonciprian/vegetable-valley-frontend)
+
 ## Author
 
 - Schőn Ciprián
