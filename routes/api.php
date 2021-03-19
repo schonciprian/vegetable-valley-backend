@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/get-user-data', [UserController::class, 'getUser'])->middleware('auth:sanctum');
