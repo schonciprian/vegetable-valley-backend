@@ -24,4 +24,14 @@ class UserController extends Controller
         ]);
         return response(['name' => $request->user()->name], 201);
     }
+
+    public function deleteUser(Request $request)
+    {
+        User::where('id', $request->id)
+            ->delete();
+
+        $request->user()->currentAccessToken()->delete();
+
+        return response("User deleted", 201);
+    }
 }
