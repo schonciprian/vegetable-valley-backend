@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function getUser()
+    public function getUserBasic()
     {
         $user = Auth::user();
-        return response($user, 201);
+        return response([
+            "id" => $user->id,
+            "name" => $user->name,
+            "email" => $user->email,
+            "created_at" => $user->created_at], 201);
     }
 
     public function updateUser(Request $request)

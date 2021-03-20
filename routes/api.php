@@ -23,6 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
-Route::get('/get-user-data', [UserController::class, 'getUser'])->middleware('auth:sanctum');
+Route::get('/get-user-data', [UserController::class, 'getUserBasic'])->middleware('auth:sanctum');
 Route::put('/update-user-data', [UserController::class, 'updateUser'])->middleware('auth:sanctum');
 Route::delete('/delete-user', [UserController::class, 'deleteUser'])->middleware('auth:sanctum');
