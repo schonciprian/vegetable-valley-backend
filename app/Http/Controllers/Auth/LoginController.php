@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         if (auth()->attempt($request->all())) {
             $token = $request->user()->createToken("VegetableValley");
-            return response(['token' => $token->plainTextToken, 'name' => $request->user()->name], 201);
+            return response(['token' => $token->plainTextToken, 'username' => $request->user()->username], 201);
         }
         return response(['failed' => 'Invalid username or password'], 400);
     }
