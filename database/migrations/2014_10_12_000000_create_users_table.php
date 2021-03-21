@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->charset = 'latin2';
             $table->collation = 'latin2_hungarian_ci';
             $table->id();
-            $table->string('name');
+            $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
