@@ -14,7 +14,9 @@ class RegisterController extends Controller
     public function store(Request $request): Response
     {
         $rules = [
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|max:20',
             'confirm_password' => 'required|min:6|max:20|same:password'
@@ -26,7 +28,9 @@ class RegisterController extends Controller
         }
 
         User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
