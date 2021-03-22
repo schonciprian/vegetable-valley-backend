@@ -55,7 +55,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         if (!Hash::check($request->current_password, $user->password)) {
-            return response(['error' => 'Current password does not match!'], 400);
+            return response(['message' => 'Current password does not match!'], 400);
         }
 
         $user->password = Hash::make($request->new_password);
