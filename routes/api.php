@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Garden\GardenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,6 @@ Route::get('/get-user-data', [UserController::class, 'getUserBasic'])->middlewar
 Route::put('/update-user-data', [UserController::class, 'updateUser'])->middleware('auth:sanctum');
 Route::put('/update-user-password', [UserController::class, 'updatePassword'])->middleware('auth:sanctum');
 Route::delete('/delete-user', [UserController::class, 'deleteUser'])->middleware('auth:sanctum');
+
+Route::get('/garden', [GardenController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/garden', [GardenController::class, 'store'])->middleware('auth:sanctum');
