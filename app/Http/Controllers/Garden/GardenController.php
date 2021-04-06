@@ -9,9 +9,12 @@ use Illuminate\Http\Response;
 
 class GardenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Response([Garden::all()]);
+        return Response([Garden::select('cell_id', 'cell_name', 'cell_picture_url')
+            ->where('user_id', $request->user()->id)
+            ->get()
+        ]);
     }
 
     public function store(Request $request): Response
