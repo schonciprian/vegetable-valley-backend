@@ -31,3 +31,4 @@ Route::delete('/delete-user', [UserController::class, 'deleteUser'])->middleware
 
 Route::get('/garden', [GardenController::class, 'index'])->middleware('auth:sanctum');
 Route::post('/garden', [GardenController::class, 'store'])->middleware('auth:sanctum');
+Route::delete('/garden', [GardenController::class, 'delete'])->middleware('auth:sanctum');
