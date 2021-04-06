@@ -26,4 +26,12 @@ class GardenController extends Controller
             'cell_picture_url' => $request->cell_picture_url,
         ]));
     }
+
+    public function delete(Request $request)
+    {
+        return Response([Garden::where('cell_id', $request->cell_id)
+            ->where('user_id', $request->user()->id)
+            ->delete()
+        ]);
+    }
 }
