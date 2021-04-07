@@ -11,7 +11,8 @@ class Garden extends Model
 
     protected $fillable = [
         'user_id',
-        'cell_id',
+        'cell_row',
+        'cell_column',
         'cell_name',
         'cell_picture_url',
     ];

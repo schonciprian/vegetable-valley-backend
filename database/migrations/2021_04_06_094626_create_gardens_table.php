@@ -16,7 +16,8 @@ class CreateGardensTable extends Migration
         Schema::create('gardens', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('cell_id');
+            $table->integer('cell_row');
+            $table->integer('cell_column');
             $table->string('cell_name');
             $table->string('cell_picture_url');
             $table->timestamps();

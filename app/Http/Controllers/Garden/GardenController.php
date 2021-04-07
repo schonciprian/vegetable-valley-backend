@@ -11,7 +11,7 @@ class GardenController extends Controller
 {
     public function index(Request $request)
     {
-        return Response([Garden::select('cell_id', 'cell_name', 'cell_picture_url')
+        return Response([Garden::select('cell_row', 'cell_column', 'cell_name', 'cell_picture_url')
             ->where('user_id', $request->user()->id)
             ->get()
         ]);
@@ -19,17 +19,30 @@ class GardenController extends Controller
 
     public function store(Request $request): Response
     {
-        return Response(Garden::create([
+        Garden::where('cell_row', $request->cell_row)
+            ->where('cell_column', $request->cell_column)
+            ->where('user_id', $request->user()->id)
+            ->delete();
+
+        $created = Garden::create([
             'user_id' => $request->user()->id,
-            'cell_id' => $request->cell_id,
+            'cell_row' => $request->cell_row,
+            'cell_column' => $request->cell_column,
             'cell_name' => $request->cell_name,
             'cell_picture_url' => $request->cell_picture_url,
-        ]));
+        ]);
+
+        if ($created) {
+            return Response(["Success"], 201);
+        }
+        return Response(["Failed"], 400);
+
     }
 
     public function delete(Request $request)
     {
-        return Response([Garden::where('cell_id', $request->cell_id)
+        return Response([Garden::where('cell_row', $request->cell_row)
+            ->where('cell_column', $request->cell_column)
             ->where('user_id', $request->user()->id)
             ->delete()
         ]);
