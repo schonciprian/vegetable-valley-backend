@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\GardenSize;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,12 +28,18 @@ class RegisterController extends Controller
             return response($validation->errors(), 400);
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+        ]);
+
+        GardenSize::create([
+            'user_id' => $user->id,
+            'row_count' => 5,
+            'column_count' => 6,
         ]);
 
         return response(["message" => "Registered"], 201);
