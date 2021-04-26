@@ -13,8 +13,4 @@ class AvailableGardens extends Model
         'user_id',
         'garden_name',
     ];
-
-    public function users(){
-        return $this->belongsTo('users', 'user_id');
-    }
 }
