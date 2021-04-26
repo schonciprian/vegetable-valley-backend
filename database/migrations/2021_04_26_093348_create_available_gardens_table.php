@@ -15,9 +15,11 @@ class CreateAvailableGardensTable extends Migration
     {
         Schema::create('available_gardens', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
             $table->string('garden_name');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
