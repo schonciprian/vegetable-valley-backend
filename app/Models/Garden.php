@@ -9,6 +9,8 @@ class Garden extends Model
 {
     use HasFactory;
 
+    protected $table = 'filled_cells';
+
     protected $fillable = [
         'user_id',
         'cell_row',
