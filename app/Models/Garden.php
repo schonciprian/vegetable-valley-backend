@@ -13,6 +13,7 @@ class Garden extends Model
 
     protected $fillable = [
         'user_id',
+        'available_garden_id',
         'cell_row',
         'cell_column',
         'cell_name',
