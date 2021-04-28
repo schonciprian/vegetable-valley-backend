@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\GardenSize;
+use App\Models\AvailableGardens;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -36,7 +36,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        GardenSize::create([
+        AvailableGardens::create([
             'user_id' => $user->id,
             'row_count' => 5,
             'column_count' => 6,
