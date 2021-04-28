@@ -13,6 +13,7 @@ class GardenSize extends Model
 
     protected $fillable = [
         'user_id',
+        'garden_name',
         'row_count',
         'column_count',
     ];
