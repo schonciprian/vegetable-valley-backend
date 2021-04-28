@@ -14,8 +14,6 @@ class AddAvailableGardenIdToFilledCells extends Migration
     public function up()
     {
         Schema::table('filled_cells', function (Blueprint $table) {
-//            $table->bigInteger('available_garden_id', false, true)->after('id');
-//            $table->foreign('available_garden_id')->references('id')->on('available_gardens');
             $table->foreignId('available_garden_id')->after('id')->default(1)->constrained('available_gardens');
         });
     }
