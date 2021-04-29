@@ -37,3 +37,4 @@ Route::delete('/garden', [FilledCellsController::class, 'delete'])->middleware('
 Route::get('/get-user-gardens', [AvailableGardensController::class, 'getUserGardens'])->middleware('auth:sanctum');
 Route::get('/get-garden-size', [AvailableGardensController::class, 'getGardenSize'])->middleware('auth:sanctum');
 Route::put('/update-garden-size', [AvailableGardensController::class, 'updateGardenSize'])->middleware('auth:sanctum');
+Route::post('/add-new-garden', [AvailableGardensController::class, 'addNewGarden'])->middleware('auth:sanctum');

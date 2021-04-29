@@ -34,4 +34,15 @@ class AvailableGardensController extends Controller
         return response(['row_count' => $request->row_count,
                          'column_count' => $request->column_count], 201);
     }
+
+    public function addNewGarden(Request $request)
+    {
+        $id = AvailableGardens::create([
+            'user_id' => $request->user()->id,
+            'row_count' => 5,
+            'column_count' => 6,
+        ])->id;
+
+        return response(['id' => $id], 201);
+    }
 }
