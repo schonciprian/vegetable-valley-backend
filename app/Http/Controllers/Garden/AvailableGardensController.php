@@ -34,7 +34,7 @@ class AvailableGardensController extends Controller
 
     public function updateGardenSize(Request $request)
     {
-        AvailableGardens::where('user_id', $request->user()->id)
+        AvailableGardens::where('id', $request->garden_id)
             ->update([
                 'row_count' => $request->row_count,
                 'column_count' => $request->column_count,
