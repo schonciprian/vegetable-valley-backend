@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class AvailableGardensController extends Controller
 {
+    public function getUserGardens(Request $request) {
+        return Response(AvailableGardens::select('id', 'garden_name')
+            ->where('user_id', $request->user()->id)
+            ->get()
+        );
+    }
 
     public function getGardenSize(Request $request)
     {
