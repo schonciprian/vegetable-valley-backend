@@ -17,7 +17,7 @@ class AddGardenNameToAvailableGardens extends Migration
     public function up()
     {
         Schema::table('available_gardens', function (Blueprint $table) {
-            $this->changeColumnType('available_gardens', 'user_id', 'bigint unsigned');
+            $this->changeColumnType('available_gardens', 'user_id', 'bigint');
 
             $table->foreign('user_id')->references('id')->on('users');
 
