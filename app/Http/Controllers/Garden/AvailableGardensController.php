@@ -19,6 +19,7 @@ class AvailableGardensController extends Controller
     {
         return Response(AvailableGardens::select('row_count', 'column_count')
             ->where('user_id', $request->user()->id)
+            ->where('id', $request->garden_id)
             ->get()
         );
     }

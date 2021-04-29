@@ -12,19 +12,20 @@ class FilledCellsController extends Controller
     public function index(Request $request)
     {
         return Response([FilledCells::select('cell_row', 'cell_column', 'cell_name', 'cell_picture_url')
-            ->where('user_id', $request->user()->id)
+            ->where('available_garden_id', $request->garden_id)
             ->get()
         ]);
     }
 
     public function store(Request $request): Response
     {
-        FilledCells::where('cell_row', $request->cell_row)
+        FilledCells::where('available_garden_id', $request->garden_id)
+            ->where('cell_row', $request->cell_row)
             ->where('cell_column', $request->cell_column)
-            ->where('user_id', $request->user()->id)
             ->delete();
 
         $created = FilledCells::create([
+            'available_garden_id' => $request->garden_id,
             'user_id' => $request->user()->id,
             'cell_row' => $request->cell_row,
             'cell_column' => $request->cell_column,
@@ -41,9 +42,9 @@ class FilledCellsController extends Controller
 
     public function delete(Request $request)
     {
-        return Response([FilledCells::where('cell_row', $request->cell_row)
+        return Response([FilledCells::where('available_garden_id', $request->garden_id)
+            ->where('cell_row', $request->cell_row)
             ->where('cell_column', $request->cell_column)
-            ->where('user_id', $request->user()->id)
             ->delete()
         ]);
     }
