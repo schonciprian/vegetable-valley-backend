@@ -15,6 +15,14 @@ class AvailableGardensController extends Controller
         );
     }
 
+    public function getGardenName(Request $request)
+    {
+        return Response(AvailableGardens::select('garden_name')
+            ->where('id', $request->garden_id)
+            ->get()
+        );
+    }
+
     public function getGardenSize(Request $request)
     {
         return Response(AvailableGardens::select('row_count', 'column_count')
