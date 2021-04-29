@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AvailableGardens;
 use Illuminate\Http\Request;
 
-class GardenSizeController extends Controller
+class AvailableGardensController extends Controller
 {
 
     public function getGardenSize(Request $request)

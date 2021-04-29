@@ -3,8 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
-use App\Http\Controllers\Garden\GardenController;
-use App\Http\Controllers\Garden\GardenSizeController;
+use App\Http\Controllers\Garden\FilledCellsController;
+use App\Http\Controllers\Garden\AvailableGardensController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +30,9 @@ Route::put('/update-user-data', [UserController::class, 'updateUser'])->middlewa
 Route::put('/update-user-password', [UserController::class, 'updatePassword'])->middleware('auth:sanctum');
 Route::delete('/delete-user', [UserController::class, 'deleteUser'])->middleware('auth:sanctum');
 
-Route::get('/garden', [GardenController::class, 'index'])->middleware('auth:sanctum');
-Route::post('/garden', [GardenController::class, 'store'])->middleware('auth:sanctum');
-Route::delete('/garden', [GardenController::class, 'delete'])->middleware('auth:sanctum');
+Route::get('/garden', [FilledCellsController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/garden', [FilledCellsController::class, 'store'])->middleware('auth:sanctum');
+Route::delete('/garden', [FilledCellsController::class, 'delete'])->middleware('auth:sanctum');
 
-Route::get('/get-garden-size', [GardenSizeController::class, 'getGardenSize'])->middleware('auth:sanctum');
-Route::put('/update-garden-size', [GardenSizeController::class, 'updateGardenSize'])->middleware('auth:sanctum');
+Route::get('/get-garden-size', [AvailableGardensController::class, 'getGardenSize'])->middleware('auth:sanctum');
+Route::put('/update-garden-size', [AvailableGardensController::class, 'updateGardenSize'])->middleware('auth:sanctum');

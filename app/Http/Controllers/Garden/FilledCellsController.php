@@ -7,7 +7,7 @@ use App\Models\FilledCells;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class GardenController extends Controller
+class FilledCellsController extends Controller
 {
     public function index(Request $request)
     {
