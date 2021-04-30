@@ -53,4 +53,12 @@ class AvailableGardensController extends Controller
 
         return response(['id' => $id], 201);
     }
+
+    public function updateGardenName(Request $request)
+    {
+        return Response(AvailableGardens::where('id', $request->garden_id)
+            ->update([
+                'garden_name' => $request->new_garden_name,
+            ]),201);
+    }
 }

@@ -39,3 +39,4 @@ Route::get('/get-garden-name', [AvailableGardensController::class, 'getGardenNam
 Route::get('/get-garden-size', [AvailableGardensController::class, 'getGardenSize'])->middleware('auth:sanctum');
 Route::put('/update-garden-size', [AvailableGardensController::class, 'updateGardenSize'])->middleware('auth:sanctum');
 Route::post('/add-new-garden', [AvailableGardensController::class, 'addNewGarden'])->middleware('auth:sanctum');
+Route::put('/update-garden-name', [AvailableGardensController::class, 'updateGardenName'])->middleware('auth:sanctum');
