@@ -86,4 +86,27 @@ class AvailableGardensController extends Controller
         }
         return Response(["Success"], 201);
     }
+
+    public function removeRow(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $actual_row_count = AvailableGardens::where('id', $request->garden_id)->value('row_count');
+            AvailableGardens::where('id', $request->garden_id)
+                ->update(['row_count' => $actual_row_count - 1]);
+            FilledCells::where('available_garden_id', $request->garden_id)
+                ->where('cell_row', $request->row_index)
+                ->delete();
+
+            FilledCells::where('available_garden_id', $request->garden_id)
+                ->where('cell_row', '>', $request->row_index)
+                ->decrement('cell_row');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Response(["Error"], 500);
+        }
+        return Response(["Success"], 201);
+
+    }
 }
