@@ -40,6 +40,7 @@ Route::get('/get-garden-size', [AvailableGardensController::class, 'getGardenSiz
 Route::put('/update-garden-size', [AvailableGardensController::class, 'updateGardenSize'])->middleware('auth:sanctum');
 Route::post('/add-new-garden', [AvailableGardensController::class, 'addNewGarden'])->middleware('auth:sanctum');
 Route::put('/update-garden-name', [AvailableGardensController::class, 'updateGardenName'])->middleware('auth:sanctum');
+Route::delete('/remove-garden', [AvailableGardensController::class, 'removeGarden'])->middleware('auth:sanctum');
 
 Route::put('/remove-column', [AvailableGardensController::class, 'removeColumn'])->middleware('auth:sanctum');
 Route::put('/add-column', [AvailableGardensController::class, 'addColumn'])->middleware('auth:sanctum');
