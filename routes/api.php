@@ -35,5 +35,13 @@ Route::post('/garden', [FilledCellsController::class, 'store'])->middleware('aut
 Route::delete('/garden', [FilledCellsController::class, 'delete'])->middleware('auth:sanctum');
 
 Route::get('/get-user-gardens', [AvailableGardensController::class, 'getUserGardens'])->middleware('auth:sanctum');
+Route::get('/get-garden-name', [AvailableGardensController::class, 'getGardenName'])->middleware('auth:sanctum');
 Route::get('/get-garden-size', [AvailableGardensController::class, 'getGardenSize'])->middleware('auth:sanctum');
 Route::put('/update-garden-size', [AvailableGardensController::class, 'updateGardenSize'])->middleware('auth:sanctum');
+Route::post('/add-new-garden', [AvailableGardensController::class, 'addNewGarden'])->middleware('auth:sanctum');
+Route::put('/update-garden-name', [AvailableGardensController::class, 'updateGardenName'])->middleware('auth:sanctum');
+
+Route::put('/remove-column', [AvailableGardensController::class, 'removeColumn'])->middleware('auth:sanctum');
+Route::put('/add-column', [AvailableGardensController::class, 'addColumn'])->middleware('auth:sanctum');
+Route::put('/remove-row', [AvailableGardensController::class, 'removeRow'])->middleware('auth:sanctum');
+Route::put('/add-row', [AvailableGardensController::class, 'addRow'])->middleware('auth:sanctum');
