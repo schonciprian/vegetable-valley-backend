@@ -57,6 +57,24 @@ class AvailableGardensController extends Controller
         return response(['id' => $id], 201);
     }
 
+    public function removeGarden(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            FilledCells::where('available_garden_id', $request->garden_id)
+                ->delete();
+
+            AvailableGardens::where('id', $request->garden_id)
+                ->delete();
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Response(["Error"], 500);
+        }
+        return Response(["Success"], 201);
+    }
+
     public function updateGardenName(Request $request)
     {
         return Response(AvailableGardens::where('id', $request->garden_id)
