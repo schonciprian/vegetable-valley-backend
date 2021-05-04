@@ -42,4 +42,6 @@ Route::post('/add-new-garden', [AvailableGardensController::class, 'addNewGarden
 Route::put('/update-garden-name', [AvailableGardensController::class, 'updateGardenName'])->middleware('auth:sanctum');
 
 Route::put('/remove-column', [AvailableGardensController::class, 'removeColumn'])->middleware('auth:sanctum');
+Route::put('/add-column', [AvailableGardensController::class, 'addColumn'])->middleware('auth:sanctum');
 Route::put('/remove-row', [AvailableGardensController::class, 'removeRow'])->middleware('auth:sanctum');
+Route::put('/add-row', [AvailableGardensController::class, 'addRow'])->middleware('auth:sanctum');
