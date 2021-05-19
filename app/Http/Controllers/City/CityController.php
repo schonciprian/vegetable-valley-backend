@@ -33,4 +33,15 @@ class CityController extends Controller
             'city_id' => $city->id,
         ]);
     }
+
+    public function removeSearchedCity(Request $request)
+    {
+        $city_id = Cities::select('id')
+            ->where('city_name', strtolower($request->city_name))
+            ->value('id');
+
+        return Response(SearchedCities::where('user_id', $request->user()->id)
+            ->where('city_id', $city_id)
+            ->delete());
+    }
 }

@@ -50,3 +50,4 @@ Route::put('/add-row', [AvailableGardensController::class, 'addRow'])->middlewar
 
 Route::get('/get-searched-city', [CityController::class, 'getSearchedCities'])->middleware('auth:sanctum');
 Route::post('/save-searched-city', [CityController::class, 'saveSearchedCity'])->middleware('auth:sanctum');
+Route::delete('/remove-searched-city', [CityController::class, 'removeSearchedCity'])->middleware('auth:sanctum');
