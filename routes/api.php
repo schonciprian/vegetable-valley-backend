@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\City\CityController;
 use App\Http\Controllers\Garden\FilledCellsController;
 use App\Http\Controllers\Garden\AvailableGardensController;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,6 @@ Route::put('/remove-column', [AvailableGardensController::class, 'removeColumn']
 Route::put('/add-column', [AvailableGardensController::class, 'addColumn'])->middleware('auth:sanctum');
 Route::put('/remove-row', [AvailableGardensController::class, 'removeRow'])->middleware('auth:sanctum');
 Route::put('/add-row', [AvailableGardensController::class, 'addRow'])->middleware('auth:sanctum');
+
+Route::get('/get-searched-city', [CityController::class, 'getSearchedCities'])->middleware('auth:sanctum');
+Route::post('/save-searched-city', [CityController::class, 'saveSearchedCity'])->middleware('auth:sanctum');
