@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\City\CityController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Garden\FilledCellsController;
 use App\Http\Controllers\Garden\AvailableGardensController;
 use Illuminate\Support\Facades\Route;
@@ -51,3 +52,7 @@ Route::put('/add-row', [AvailableGardensController::class, 'addRow'])->middlewar
 Route::get('/get-searched-city', [CityController::class, 'getSearchedCities'])->middleware('auth:sanctum');
 Route::post('/save-searched-city', [CityController::class, 'saveSearchedCity'])->middleware('auth:sanctum');
 Route::delete('/remove-searched-city', [CityController::class, 'removeSearchedCity'])->middleware('auth:sanctum');
+
+Route::get('/get-images', [GalleryController::class, 'getUserImages'])->middleware('auth:sanctum');
+Route::post('/save-image', [GalleryController::class, 'saveUserImage'])->middleware('auth:sanctum');
+Route::delete('/remove-image', [GalleryController::class, 'removeUserImage'])->middleware('auth:sanctum');
