@@ -28,7 +28,7 @@ class GalleryController extends Controller
 
     public function removeUserImage(Request $request)
     {
-        return Response(Gallery::where('image_id', $request->image_id)
+        return Response(Gallery::whereIn('image_id', $request->image_ids)
             ->delete());
     }
 }
