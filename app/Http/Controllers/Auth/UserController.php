@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AvailableGardens;
+use App\Models\FilledCells;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +38,9 @@ class UserController extends Controller
 
     public function deleteUser(Request $request)
     {
-        User::where('id', $request->id)
-            ->delete();
+        FilledCells::where('user_id', $request->id)->delete();
+        AvailableGardens::where('user_id', $request->id)->delete();
+        User::where('id', $request->id)->delete();
 
         $request->user()->currentAccessToken()->delete();
 
