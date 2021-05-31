@@ -14,4 +14,13 @@ class TagController extends Controller
             ->get()
         );
     }
+
+    public function saveTag(Request $request)
+    {
+        return Response(ImageTags::create([
+            'user_id' => $request->user()->id,
+            'tag_name' => $request->tagName,
+            'tag_color' => $request->color,
+        ]));
+    }
 }

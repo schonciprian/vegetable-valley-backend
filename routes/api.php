@@ -59,3 +59,4 @@ Route::post('/save-image', [GalleryController::class, 'saveUserImage'])->middlew
 Route::delete('/remove-image', [GalleryController::class, 'removeUserImage'])->middleware('auth:sanctum');
 
 Route::get('/get-tags', [TagController::class, 'getTags'])->middleware('auth:sanctum');
+Route::post('/save-tag', [TagController::class, 'saveTag'])->middleware('auth:sanctum');
