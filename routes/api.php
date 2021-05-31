@@ -7,6 +7,7 @@ use App\Http\Controllers\City\CityController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Garden\FilledCellsController;
 use App\Http\Controllers\Garden\AvailableGardensController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +57,5 @@ Route::delete('/remove-searched-city', [CityController::class, 'removeSearchedCi
 Route::get('/get-images', [GalleryController::class, 'getUserImages'])->middleware('auth:sanctum');
 Route::post('/save-image', [GalleryController::class, 'saveUserImage'])->middleware('auth:sanctum');
 Route::delete('/remove-image', [GalleryController::class, 'removeUserImage'])->middleware('auth:sanctum');
+
+Route::get('/get-tags', [TagController::class, 'getTags'])->middleware('auth:sanctum');
