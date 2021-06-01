@@ -50,6 +50,7 @@ class GalleryController extends Controller
             )
             ->where('galleries.user_id', '=', $request->user()->id)
             ->groupBy('galleries.id')
+            ->orderBy('created_at','DESC')
             ->get()
         );
     }
