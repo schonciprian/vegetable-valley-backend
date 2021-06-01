@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageTags;
+use App\Models\ImageTagsMap;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -21,6 +22,14 @@ class TagController extends Controller
             'user_id' => $request->user()->id,
             'tag_name' => $request->tagName,
             'tag_color' => $request->color,
+        ]));
+    }
+
+    public function saveTagToImage(Request $request)
+    {
+        return Response(ImageTagsMap::create([
+            'image_id' => $request->image_id,
+            'tag_id' => $request->tag_id,
         ]));
     }
 }

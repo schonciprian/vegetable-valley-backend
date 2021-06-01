@@ -60,3 +60,4 @@ Route::delete('/remove-image', [GalleryController::class, 'removeUserImage'])->m
 
 Route::get('/get-tags', [TagController::class, 'getTags'])->middleware('auth:sanctum');
 Route::post('/save-tag', [TagController::class, 'saveTag'])->middleware('auth:sanctum');
+Route::post('/save-tag-to-image', [TagController::class, 'saveTagToImage'])->middleware('auth:sanctum');
