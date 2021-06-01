@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\ImageTagsMap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -66,7 +67,10 @@ class GalleryController extends Controller
 
     public function removeUserImage(Request $request)
     {
-        return Response(Gallery::whereIn('image_id', $request->image_ids)
+        ImageTagsMap::whereIn('image_id', $request->image_ids)
+            ->delete();
+
+        return Response(Gallery::whereIn('id', $request->image_ids)
             ->delete());
     }
 }
