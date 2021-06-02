@@ -15,6 +15,5 @@ class Gallery extends Model
         'original_filename',
         'format',
         'type',
-        'tag_id'
     ];
 }
