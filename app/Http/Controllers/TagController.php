@@ -32,4 +32,11 @@ class TagController extends Controller
             'tag_id' => $request->tag_id,
         ]));
     }
+
+    public function removeTagFromImage(Request $request)
+    {
+        return Response(ImageTagsMap::where('image_id', $request->image_id)
+            ->where('tag_id', $request->tag_id)
+            ->delete());
+    }
 }
