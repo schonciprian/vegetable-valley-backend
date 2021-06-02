@@ -43,6 +43,7 @@ class GalleryController extends Controller
                 'galleries.type',
                 'galleries.created_at',
 
+                DB::raw("GROUP_CONCAT(image_tags.id) as tagId"),
                 DB::raw("GROUP_CONCAT(image_tags.tag_name) as tagName"),
                 DB::raw("GROUP_CONCAT(image_tags.tag_color) as tagColor"),
 //                'image_tags.tag_name',
